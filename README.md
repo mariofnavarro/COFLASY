@@ -12,7 +12,7 @@ The github repository of this code consists of the following files:
 BasicModule.m: contains all the definitions, equations and functions used to solve the system of differential equations and produce output.
 
 COFLASY-M.nb: acts as the main front end notebook which loads BasicModule.m and contains a series of
-examples that serve as a tutorial for the user. These examples refer to some of the evolution plots in arXiv:2502.XXXXXX.
+examples that serve as a tutorial for the user. These examples refer to some of the evolution plots in arXiv:2502.14960.
 
 COFLASY-M.pdf: technical notes written in latex which contain a description of the full set of equations, definitions and functions that form the code.
 
