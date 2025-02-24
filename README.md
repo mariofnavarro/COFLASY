@@ -5,7 +5,7 @@ The Mathematica code "COFLASY-M" has been developed by Valerie Domcke, Miguel Es
 "Lepton Flavour Asymmetries: from the early Universe to BBN."  Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner
 [arXiv:2502.14960] (https://arxiv.org/abs/2502.14960), [INSPIRE] (https://inspirehep.net/literature/2893306).
 
-As of 21/02/2025:
+As of 24/02/2025:
 
 The github repository of this code consists of the following files:
 
