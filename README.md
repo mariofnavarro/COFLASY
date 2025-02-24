@@ -1,6 +1,6 @@
 # COFLASY-M: COsmological evolution of FLAvour ASYmmetries - Mathematica
 
-The Mathematica code "COFLASY-M" has been developed by Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner in order to study the evolution of primordial lepton flavour asymmetries from the early Universe to BBN, following the approach of arXiv:2502.XXXXXX. If you use this code for scientific publications, please cite this paper: 
+The Mathematica code "COFLASY-M" has been developed by Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner in order to study the evolution of primordial lepton flavour asymmetries from the early Universe to BBN, following the approach of arXiv:2502.14960. If you use this code for scientific publications, please cite this paper: 
 
 "Lepton Flavour Asymmetries: from the early Universe to BBN."  Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner
 [arXiv:2502.14960] (https://arxiv.org/abs/2502.14960), [INSPIRE] (https://inspirehep.net/literature/2893306).
