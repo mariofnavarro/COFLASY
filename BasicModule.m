@@ -10,7 +10,7 @@
 (*If you use this code for scientific publications, please cite the paper :*)
 (*  *)
 (*"Lepton Flavour Asymmetries: from the early Universe to BBN",  Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner*)
-(*[arXiv:2502.14960] (https://arxiv.org/abs/2502.14960), [INSPIRE] (https://inspirehep.net/literature/2893306) .*)
+(*[arXiv:2502.14960] ( https://arxiv.org/abs/2502.14960 ), [INSPIRE] ( https://inspirehep.net/literature/2893306 ) .*)
 (*  *)
 
 
