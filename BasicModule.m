@@ -18,6 +18,9 @@
 (*This module contains all the definitions, constants and functions to solve the system of ODEs.*)
 (**)
 (*All equation numbering in this module refers to the technical notes in pdf accompanying this code, unless otherwise specified.*)
+(**)
+(*Last major update: 24-03-2025*)
+(*v1.1*)
 
 
 (* ::Subsubsection::Closed:: *)
@@ -360,29 +363,37 @@ rbar0inif[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_]:=a0/.gellMannComponents[rbarinifMat[
 
 
 (* ::Text:: *)
-(*This section contains two functions to solve the system of ODEs : solveFD : Solves the full system of ODEs with FD collisions, solveDamping : Solves the full system of ODEs with damping collisions, Both functions may consider the adiabatic approximation or not depending on user input . A timeout set by the user also switches non-adiabiatic -> adiabatic during the evolution*)
+(*This section contains two functions to solve the system of ODEs:*)
+(*solveFD : Solves the full system of ODEs with FD collisions,*)
+(*solveDamping : Solves the full system of ODEs with damping collisions,*)
+(*Both functions may consider the adiabatic approximation or not depending on user input . A timeout set by the user also switches non-adiabiatic -> adiabatic during the evolution*)
 (**)
-(*These functions receive : *)
+(*The arguments of these functions are: *)
 (*(\[Xi]e, \[Xi]\[Mu], \[Xi]\[Tau]) : initial values of the initial reduced chemical potentials for each flavour, *)
-(*Filename : string containing the name for the . dat file were the output is saved, *)
+(*filename : string containing the name for the . dat file were the output is saved, *)
 (*Tini : the initial temperature in MeV, *)
 (*Tave : the temperature at which the solver finishes and oscillation average is taken in MeV, *)
 (*Tfinal : the results at Tave is extended asymptotically until this final temperature, *)
-(*Accval : accuracy setting for NDSolve, *)
-(*Precval : precision setting for NDSolve, *)
-(*SolverMethod : method used by NDSolve to solve the ODEs, e . g . "BDF" or "StiffnessSwitching", *)
-(*Adiabatic : True in order to use the adiabatic approximation from the beginning, False to solve the full system, *)
-(*TimeoutAdiabatic : When the full system is being solved, this is the execution time in seconds after which the solver switches to the adiabatic approximation*)
+(*accval : accuracy setting for NDSolve, *)
+(*precval : precision setting for NDSolve, *)
+(*solverMethod : method used by NDSolve to solve the ODEs, e . g . "BDF" or "StiffnessSwitching", *)
+(*adiabatic : True in order to use the adiabatic approximation from the beginning, False to solve the full system, *)
+(*timeoutAdiabatic : When the full system is being solved, this is the execution time in seconds after which the solver switches to the adiabatic approximation*)
 (**)
 (*Note that by definition one should respect Tini < Tave <= Tfinal*)
 (**)
 (*The output in all cases is a Mathematica plot and a saved . dat file with the results*)
 
 
-solveFD[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_,Filename_:"output",Tini_:20MeV,Tave_:1.5MeV,Tfinal_:1MeV,Accval_:8,Precval_:8,SolverMethod_:"BDF",Adiabatic_:False,TimeoutAdiabatic_:300]:=(
+optionsSolve={filename->"output",Tini->20MeV,Tave->1.5MeV,Tfinal->1MeV,accval->8,precval->8,solverMethod->"BDF",adiabatic->False,timeoutAdiabatic->300};
+Options[solveFD]=optionsSolve;
+Options[solveDamping]=optionsSolve;
+
+
+solveFD[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_,OptionsPattern[]]:=(
 (*Checking that user input of T values is consistent, otherwise default values are used*)
 tini=AbsoluteTime[];
-If[Tini>Tave>=Tfinal,Tinival=Tini;Taveval=Tave;Tfinalval=Tfinal,Tinival=20MeV;Taveval=1.5MeV;Tfinalval=1MeV;Print["Tini, Tave and Tfinal seem inconsistent, using instead Tini=20 MeV, Tave=1.5 MeV, Tfinal=1 MeV"]];
+If[OptionValue[Tini]>OptionValue[Tave]>=OptionValue[Tfinal],Tinival=OptionValue[Tini];Taveval=OptionValue[Tave];Tfinalval=OptionValue[Tfinal],Tinival=20MeV;Taveval=1.5MeV;Tfinalval=1MeV;Print["Tini, Tave and Tfinal seem inconsistent, using instead Tini=20 MeV, Tave=1.5 MeV, Tfinal=1 MeV"]];
 
 (* initial conditions *)
 Clear[r0,rbar0,r1,r2,r3,r4,r5,r6,r7,r8,rbar1,rbar2,rbar3,rbar4,rbar5,rbar6,rbar7,rbar8];
@@ -395,12 +406,12 @@ xini=Tref/Tinival;
 xave=Tref/Taveval;
 
 (*Solving the system*)
-ControlAdiabatic=Adiabatic;
+ControlAdiabatic=OptionValue[adiabatic];
 If[ControlAdiabatic==True,Print["Starting evolution of the system with \!\(\*SubscriptBox[\(V\), \(s\)]\)=0"];VsControl=0.0,Print["Starting evolution of the full system"];VsControl=1.0];
 tin=AbsoluteTime[];
 Monitor[sol=First[NDSolve[{ 
 {r0'[x],r1'[x],r2'[x],r3'[x],r4'[x],r5'[x],r6'[x],r7'[x],r8'[x]}==rhsvecFD,{rbar0'[x],rbar1'[x],rbar2'[x],rbar3'[x],rbar4'[x],rbar5'[x],rbar6'[x],rbar7'[x],rbar8'[x]}==rhsvecbarFD,
-r0[xini]==r0ini,r1[xini]==rini[[1]],r2[xini]==rini[[2]],r3[xini]==rini[[3]],r4[xini]==rini[[4]],r5[xini]==rini[[5]],r6[xini]==rini[[6]],r7[xini]==rini[[7]],r8[xini]==rini[[8]],rbar0[xini]==rbar0ini,rbar1[xini]==rbarini[[1]],rbar2[xini]==rbarini[[2]],rbar3[xini]==rbarini[[3]],rbar4[xini]==rbarini[[4]],rbar5[xini]==rbarini[[5]],rbar6[xini]==rbarini[[6]],rbar7[xini]==rbarini[[7]],rbar8[xini]==rbarini[[8]], switchVs[xini]==VsControl,WhenEvent[(AbsoluteTime[]-tin>TimeoutAdiabatic)&&(ControlAdiabatic==False),{Print["Timeout of "<>ToString[TimeoutAdiabatic]<>"s reached at T= "<>ToString[Tref/x]<>" MeV \[Rule] Switching to adiabatic \!\(\*SubscriptBox[\(V\), \(s\)]\)=0"],switchVs[x]->0.0,ControlAdiabatic=True}]},{r0,r1,r2,r3,r4,r5,r6,r7,r8,rbar0,rbar1,rbar2,rbar3,rbar4,rbar5,rbar6,rbar7,rbar8,switchVs},{x,xini,xave},PrecisionGoal->Precval,AccuracyGoal->Accval,MaxSteps->10^8,MaxStepSize->0.1,Method->{SolverMethod},DiscreteVariables->{switchVs},EvaluationMonitor:>{(monitor=Row[{"T= ", CForm[Tref/x]," MeV"}]),(time=x)}]],{monitor,ProgressIndicator[time,{xini,xave}]}];
+r0[xini]==r0ini,r1[xini]==rini[[1]],r2[xini]==rini[[2]],r3[xini]==rini[[3]],r4[xini]==rini[[4]],r5[xini]==rini[[5]],r6[xini]==rini[[6]],r7[xini]==rini[[7]],r8[xini]==rini[[8]],rbar0[xini]==rbar0ini,rbar1[xini]==rbarini[[1]],rbar2[xini]==rbarini[[2]],rbar3[xini]==rbarini[[3]],rbar4[xini]==rbarini[[4]],rbar5[xini]==rbarini[[5]],rbar6[xini]==rbarini[[6]],rbar7[xini]==rbarini[[7]],rbar8[xini]==rbarini[[8]], switchVs[xini]==VsControl,WhenEvent[(AbsoluteTime[]-tin>OptionValue[timeoutAdiabatic])&&(ControlAdiabatic==False),{Print["Timeout of "<>ToString[OptionValue[timeoutAdiabatic]]<>"s reached at T= "<>ToString[Tref/x]<>" MeV \[Rule] Switching to adiabatic \!\(\*SubscriptBox[\(V\), \(s\)]\)=0"],switchVs[x]->0.0,ControlAdiabatic=True}]},{r0,r1,r2,r3,r4,r5,r6,r7,r8,rbar0,rbar1,rbar2,rbar3,rbar4,rbar5,rbar6,rbar7,rbar8,switchVs},{x,xini,xave},PrecisionGoal->OptionValue[precval],AccuracyGoal->OptionValue[accval],MaxSteps->10^8,MaxStepSize->0.1,Method->{OptionValue[solverMethod]},DiscreteVariables->{switchVs},EvaluationMonitor:>{(monitor=Row[{"T= ", CForm[Tref/x]," MeV"}]),(time=x)}]],{monitor,ProgressIndicator[time,{xini,xave}]}];
 
 Print["System evolved until \!\(\*SubscriptBox[\(T\), \(ave\)]\)="<>ToString[Taveval]," MeV"];
 
@@ -466,8 +477,8 @@ Matvec[[Length[Tvec]+2,3]]=\[CapitalDelta]n\[Mu]final;
 Matvec[[Length[Tvec]+2,4]]=\[CapitalDelta]n\[Tau]final;
 
 Matvec=SetPrecision[Matvec[[All,All]],7];
-Print["Thermodynamics are output to: output/"<> Filename<>".dat"];
-Export["output/"<> Filename<>".dat",Matvec,"Table","FieldSeparators"->"      ","TableHeadings"-> {"# T[MeV]" ,"nnbare","nnbarmu","nnbartau"}];
+Print["Thermodynamics are output to: output/"<> OptionValue[filename]<>".dat"];
+Export["output/"<> OptionValue[filename]<>".dat",Matvec,"Table","FieldSeparators"->"      ","TableHeadings"-> {"# T[MeV]" ,"nnbare","nnbarmu","nnbartau"}];
 
 
 tfinal=AbsoluteTime[];
@@ -478,10 +489,10 @@ Return[plotFinal];
 
 
 
-solveDamping[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_,Filename_:"output",Tini_:20MeV,Tave_:1.5MeV,Tfinal_:1MeV,Accval_:8,Precval_:8,SolverMethod_:"BDF",Adiabatic_:False,TimeoutAdiabatic_:300]:=(
+solveDamping[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_,OptionsPattern[]]:=(
 (*Checking that user input of T values is consistent, otherwise default values are used*)
 tini=AbsoluteTime[];
-If[Tini>Tave>=Tfinal,Tinival=Tini;Taveval=Tave;Tfinalval=Tfinal,Tinival=20MeV;Taveval=1.5MeV;Tfinalval=1MeV;Print["Tini, Tave and Tfinal seem inconsistent, using instead Tini=20 MeV, Tave=1.5 MeV, Tfinal=1 MeV"]];
+If[OptionValue[Tini]>OptionValue[Tave]>=OptionValue[Tfinal],Tinival=OptionValue[Tini];Taveval=OptionValue[Tave];Tfinalval=OptionValue[Tfinal],Tinival=20MeV;Taveval=1.5MeV;Tfinalval=1MeV;Print["Tini, Tave and Tfinal seem inconsistent, using instead Tini=20 MeV, Tave=1.5 MeV, Tfinal=1 MeV"]];
 
 (* initial conditions *)
 Clear[r0,rbar0,r1,r2,r3,r4,r5,r6,r7,r8,rbar1,rbar2,rbar3,rbar4,rbar5,rbar6,rbar7,rbar8];
@@ -494,12 +505,12 @@ xini=Tref/Tinival;
 xave=Tref/Taveval;
 
 (*Solving the system*)
-ControlAdiabatic=Adiabatic;
+ControlAdiabatic=OptionValue[adiabatic];
 If[ControlAdiabatic==True,Print["Starting evolution of the system with \!\(\*SubscriptBox[\(V\), \(s\)]\)=0"];VsControl=0.0,Print["Starting evolution of the full system"];VsControl=1.0];
 tin=AbsoluteTime[];
 Monitor[sol=First[NDSolve[{ 
 {r0'[x],r1'[x],r2'[x],r3'[x],r4'[x],r5'[x],r6'[x],r7'[x],r8'[x]}==rhsvecD,{rbar0'[x],rbar1'[x],rbar2'[x],rbar3'[x],rbar4'[x],rbar5'[x],rbar6'[x],rbar7'[x],rbar8'[x]}==rhsvecbarD,
-r0[xini]==r0ini,r1[xini]==rini[[1]],r2[xini]==rini[[2]],r3[xini]==rini[[3]],r4[xini]==rini[[4]],r5[xini]==rini[[5]],r6[xini]==rini[[6]],r7[xini]==rini[[7]],r8[xini]==rini[[8]],rbar0[xini]==rbar0ini,rbar1[xini]==rbarini[[1]],rbar2[xini]==rbarini[[2]],rbar3[xini]==rbarini[[3]],rbar4[xini]==rbarini[[4]],rbar5[xini]==rbarini[[5]],rbar6[xini]==rbarini[[6]],rbar7[xini]==rbarini[[7]],rbar8[xini]==rbarini[[8]], switchVs[xini]==VsControl,WhenEvent[(AbsoluteTime[]-tin>TimeoutAdiabatic)&&(ControlAdiabatic==False),{Print["Timeout of "<>ToString[TimeoutAdiabatic]<>"s reached at T= "<>ToString[Tref/x]<>" MeV \[Rule] Switching to adiabatic \!\(\*SubscriptBox[\(V\), \(s\)]\)=0"],switchVs[x]->0.0,ControlAdiabatic=True}]},{r0,r1,r2,r3,r4,r5,r6,r7,r8,rbar0,rbar1,rbar2,rbar3,rbar4,rbar5,rbar6,rbar7,rbar8,switchVs},{x,xini,xave},PrecisionGoal->Precval,AccuracyGoal->Accval,MaxSteps->10^8,MaxStepSize->0.1,Method->{SolverMethod},DiscreteVariables->{switchVs},EvaluationMonitor:>{(monitor=Row[{"T= ", CForm[Tref/x]," MeV"}]),(time=x)}]],{monitor,ProgressIndicator[time,{xini,xave}]}];
+r0[xini]==r0ini,r1[xini]==rini[[1]],r2[xini]==rini[[2]],r3[xini]==rini[[3]],r4[xini]==rini[[4]],r5[xini]==rini[[5]],r6[xini]==rini[[6]],r7[xini]==rini[[7]],r8[xini]==rini[[8]],rbar0[xini]==rbar0ini,rbar1[xini]==rbarini[[1]],rbar2[xini]==rbarini[[2]],rbar3[xini]==rbarini[[3]],rbar4[xini]==rbarini[[4]],rbar5[xini]==rbarini[[5]],rbar6[xini]==rbarini[[6]],rbar7[xini]==rbarini[[7]],rbar8[xini]==rbarini[[8]], switchVs[xini]==VsControl,WhenEvent[(AbsoluteTime[]-tin>OptionValue[timeoutAdiabatic])&&(ControlAdiabatic==False),{Print["Timeout of "<>ToString[OptionValue[timeoutAdiabatic]]<>"s reached at T= "<>ToString[Tref/x]<>" MeV \[Rule] Switching to adiabatic \!\(\*SubscriptBox[\(V\), \(s\)]\)=0"],switchVs[x]->0.0,ControlAdiabatic=True}]},{r0,r1,r2,r3,r4,r5,r6,r7,r8,rbar0,rbar1,rbar2,rbar3,rbar4,rbar5,rbar6,rbar7,rbar8,switchVs},{x,xini,xave},PrecisionGoal->OptionValue[precval],AccuracyGoal->OptionValue[accval],MaxSteps->10^8,MaxStepSize->0.1,Method->{OptionValue[solverMethod]},DiscreteVariables->{switchVs},EvaluationMonitor:>{(monitor=Row[{"T= ", CForm[Tref/x]," MeV"}]),(time=x)}]],{monitor,ProgressIndicator[time,{xini,xave}]}];
 
 Print["System evolved until \!\(\*SubscriptBox[\(T\), \(ave\)]\)="<>ToString[Taveval]," MeV"];
 
@@ -565,8 +576,8 @@ Matvec[[Length[Tvec]+2,3]]=\[CapitalDelta]n\[Mu]final;
 Matvec[[Length[Tvec]+2,4]]=\[CapitalDelta]n\[Tau]final;
 
 Matvec=SetPrecision[Matvec[[All,All]],7];
-Print["Thermodynamics are output to: output/"<> Filename<>".dat"];
-Export["output/"<> Filename<>".dat",Matvec,"Table","FieldSeparators"->"      ","TableHeadings"-> {"# T[MeV]" ,"nnbare","nnbarmu","nnbartau", "Neff_trace"}];
+Print["Thermodynamics are output to: output/"<> OptionValue[filename]<>".dat"];
+Export["output/"<> OptionValue[filename]<>".dat",Matvec,"Table","FieldSeparators"->"      ","TableHeadings"-> {"# T[MeV]" ,"nnbare","nnbarmu","nnbartau"}];
 
 
 tfinal=AbsoluteTime[];
