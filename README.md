@@ -18,3 +18,5 @@ COFLASY-M.pdf: technical notes written in latex which contain a description of t
 
 
 To get started, we advise the user to read the technical notes. In order to run the code, the user may open the COFLASY-M.nb notebook and evaluate the "Basic module" section. Afterwards, the user may go through the "Examples" section in the COFLASY-M.nb notebook, which serves as a tutorial to get familiar with the code.
+
+For any comment, please contact us at: Mario.FernandezNavarro@glasgow.ac.uk
