@@ -9,8 +9,8 @@
 (**)
 (*If you use this code for scientific publications, please cite the paper :*)
 (*  *)
-(*"Lepton Flavour Asymmetries: from the early Universe to BBN",  Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner*)
-(*[arXiv:2502.14960] ( https://arxiv.org/abs/2502.14960 ), [INSPIRE] ( https://inspirehep.net/literature/2893306 ) .*)
+(*"Lepton Flavour Asymmetries: from the early Universe to BBN",  Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner,*)
+(*[JHEP 06, 137] ( https://link.springer.com/article/10.1007/JHEP06(2025)137 ), [arXiv:2502.14960] ( https://arxiv.org/abs/2502.14960 ), [INSPIRE] ( https://inspirehep.net/literature/2893306 ) .*)
 (*  *)
 
 
@@ -19,8 +19,8 @@
 (**)
 (*All equation numbering in this module refers to the technical notes in pdf accompanying this code, unless otherwise specified.*)
 (**)
-(*Last major update: 24-03-2025*)
-(*v1.1*)
+(*Last major update: 09-07-2025*)
+(*v1.2*)
 
 
 (* ::Subsubsection::Closed:: *)
@@ -40,13 +40,19 @@ me = 0.511MeV;
 m\[Mu]=105.7MeV;
 
 (*Mixing parameters used in the paper*)
+(*For normal ordering*)
 \[CapitalDelta]msq21=7.53*10^-5 eV^2;
-\[CapitalDelta]msq31=2.534*10^-3 eV^2; (*For inverted ordering, add minus sign*)
+\[CapitalDelta]msq31=2.534*10^-3 eV^2;
 \[Theta]12=0.587;
 \[Theta]23=0.831;
 \[Theta]13=0.148;
 
-\[Delta]CP=0.0;(*This may be modified by the user but typically has small impact on the final results, as described in the paper the largest difference (although still small) is with the variation of \[Theta]13*)
+(*For inverted ordering*)
+(*\[CapitalDelta]msq31=-2.46*10^-3 eV^2;*)
+(*\[Theta]23=0.824;*)
+(*\[CapitalDelta]msq21, \[Theta]12, \[Theta]13 remain as in normal ordering*)
+
+\[Delta]CP=0.0; (*This may be modified by the user but typically has small impact on the final results, as described in the paper the largest difference (although still small) is with the variation of \[Theta]13*)
 
 FAC\[CapitalDelta]n=1; (*Controls globally the overall normalization of asymmetries \[CapitalDelta]n=FAC\[CapitalDelta]n(n-nbar)/T^3, FAC\[CapitalDelta]n=1 matches the normalisation in our paper while e.g. FAC\[CapitalDelta]n=100*6 is used in some figures of [2110.11889]*)
 
@@ -391,9 +397,10 @@ Options[solveDamping]=optionsSolve;
 
 
 solveFD[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_,OptionsPattern[]]:=(
-(*Checking that user input of T values is consistent, otherwise default values are used*)
 tini=AbsoluteTime[];
-If[OptionValue[Tini]>OptionValue[Tave]>=OptionValue[Tfinal],Tinival=OptionValue[Tini];Taveval=OptionValue[Tave];Tfinalval=OptionValue[Tfinal],Tinival=20MeV;Taveval=1.5MeV;Tfinalval=1MeV;Print["Tini, Tave and Tfinal seem inconsistent, using instead Tini=20 MeV, Tave=1.5 MeV, Tfinal=1 MeV"]];
+(*Checking that user input of T values is consistent, otherwise default values are used*)
+If[OptionValue[Tini]>OptionValue[Tave],Tinival=OptionValue[Tini];Taveval=OptionValue[Tave];Tfinalval=OptionValue[Tfinal],Tinival=20MeV;Taveval=1.5MeV;Tfinalval=1MeV;Print["Tini, Tave and Tfinal seem inconsistent, using instead Tini=20 MeV, Tave=1.5 MeV, Tfinal=1 MeV"]];
+If[OptionValue[Tave]<OptionValue[Tfinal],Tfinalval=OptionValue[Tave]]
 
 (* initial conditions *)
 Clear[r0,rbar0,r1,r2,r3,r4,r5,r6,r7,r8,rbar1,rbar2,rbar3,rbar4,rbar5,rbar6,rbar7,rbar8];
@@ -490,9 +497,10 @@ Return[plotFinal];
 
 
 solveDamping[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_,OptionsPattern[]]:=(
-(*Checking that user input of T values is consistent, otherwise default values are used*)
 tini=AbsoluteTime[];
-If[OptionValue[Tini]>OptionValue[Tave]>=OptionValue[Tfinal],Tinival=OptionValue[Tini];Taveval=OptionValue[Tave];Tfinalval=OptionValue[Tfinal],Tinival=20MeV;Taveval=1.5MeV;Tfinalval=1MeV;Print["Tini, Tave and Tfinal seem inconsistent, using instead Tini=20 MeV, Tave=1.5 MeV, Tfinal=1 MeV"]];
+(*Checking that user input of T values is consistent, otherwise default values are used*)
+If[OptionValue[Tini]>OptionValue[Tave],Tinival=OptionValue[Tini];Taveval=OptionValue[Tave];Tfinalval=OptionValue[Tfinal],Tinival=20MeV;Taveval=1.5MeV;Tfinalval=1MeV;Print["Tini, Tave and Tfinal seem inconsistent, using instead Tini=20 MeV, Tave=1.5 MeV, Tfinal=1 MeV"]];
+If[OptionValue[Tave]<OptionValue[Tfinal],Tfinalval=OptionValue[Tave]]
 
 (* initial conditions *)
 Clear[r0,rbar0,r1,r2,r3,r4,r5,r6,r7,r8,rbar1,rbar2,rbar3,rbar4,rbar5,rbar6,rbar7,rbar8];

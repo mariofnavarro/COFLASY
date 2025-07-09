@@ -2,12 +2,12 @@
 
 The Mathematica code "COFLASY-M" has been developed by Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner in order to study the evolution of primordial lepton flavour asymmetries from the early Universe to BBN, following the approach of arXiv:2502.14960. If you use this code for scientific publications, please cite this paper: 
 
-"Lepton Flavour Asymmetries: from the early Universe to BBN."  Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner
-[arXiv:2502.14960] (https://arxiv.org/abs/2502.14960), [INSPIRE] (https://inspirehep.net/literature/2893306).
+"Lepton Flavour Asymmetries: from the early Universe to BBN."  Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner,
+[JHEP 06, 137] (https://link.springer.com/article/10.1007/JHEP06(2025)137), [arXiv:2502.14960] (https://arxiv.org/abs/2502.14960), [INSPIRE] (https://inspirehep.net/literature/2893306).
 
-As of 24/03/2025:
+As of 09/07/2025:
 
-The github repository of this code consists of the following files:
+The GitHub repository of this code (https://github.com/mariofnavarro/COFLASY) consists of the following files:
 
 BasicModule.m: contains all the definitions, equations and functions used to solve the system of differential equations and produce output.
 
