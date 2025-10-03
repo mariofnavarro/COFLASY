@@ -1,0 +1,12 @@
+# 1: xi1_ini	2: xi2_ini	3: xi3_ini	4: dn1_final	5: dn2_final	6: dn3_final	7: znu_final	8: zg_final	9: Neff_final	10: rho_e	11: rho_mu	12: rho_tau	13: rhobar_e	14: rhobar_mu	15: rhobar_tau	16: Xn_dec	17: Yp	18: D/H
+
+# 1: xi1_ini, 2: xi2_ini, 3: xi3_ini : Initial (primordial) chemical potentials, 1 = e, 2 = mu, 3 = tau
+# 4: dn1_final, 5: dn2_final, 6: dn3_final : Number density differences/Tcm^3 for each flavor evaluated at Tcm = 1.5 MeV (which do not change for smaller temperatures)
+# 7: znu_final : final ratio of Tnu/Tcm
+# 8: zg_final  : final ratio of Tgamma/Tcm
+# 9: Neff_final : Neff as relevant for CMB observations
+# 10: rho_e, 11: rho_mu, 12: rho_tau : neutrino energy densities/Tcm^4 per flavor evaluated at Tcm = 1.5 MeV. For lower T these quantities remain constant. 
+# 13: rhobar_e, 14: rhobar_mu, 15: rhobar_tau : antineutrino energy densities/Tcm^4 per flavor evaluated at Tcm = 1.5 MeV. For lower T these quantities remain constant. 
+# 16: Xn_dec : Neutron fraction at Tcm = 1.5 MeV as solved using the full time dependent electron neutrino asymmetries
+# 17: Yp : Helium-4 mass fraction as given by Eq. 2.22a using the input from the previous columns
+# 18: D/H : 10^5 * D/H as given by Eq. 2.22b using the input from the previous columns
