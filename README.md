@@ -54,7 +54,7 @@ example.ini: contains all initial conditions, which can be changed by the user.
 
 output: stores the output of the code and a Mathematica notebook to generate simple plots.
 
-publicdata: contains the data used in our paper [arxiv:2510.XXXXX]
+publicdata: contains the data used in our paper [arxiv:2510.02438]
 
 
 ## Acknowledgement 
@@ -62,4 +62,4 @@ publicdata: contains the data used in our paper [arxiv:2510.XXXXX]
 The code makes use of the ini file decoder [inifile-cpp](https://github.com/Rookfighter/inifile-cpp).
 
 
-For any comment, please contact us at: Stefan.Sandner@lanl.gov, Mario.FernandezNavarro@glasgow.ac.uk
+For any comment, please contact us at: Stefan.Sandner@lanl.gov, mario.fernandeznavarro@physik.uzh.ch
