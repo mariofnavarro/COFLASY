@@ -5,7 +5,7 @@
 
 
 (* ::Text:: *)
-(*by Valerie Domcke (valerie.domcke@cern.ch), Miguel Escudero (miguel.escudero@cern.ch), Mario Fernandez Navarro (Mario.FernandezNavarro@glasgow.ac.uk), Stefan Sandner (stefan.sandner@lanl.gov)*)
+(*by Valerie Domcke (valerie.domcke@cern.ch), Miguel Escudero (miguel.escudero@cern.ch), Mario Fernandez Navarro (mario.fernandeznavarro@physik.uzh.ch), Stefan Sandner (stefan.sandner@lanl.gov)*)
 (**)
 (*If you use this code for scientific publications, please cite the paper :*)
 (*  *)
@@ -366,7 +366,7 @@ r0inif[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_]:=a0/.gellMannComponents[rinifMat[\[Xi]e
 rbar0inif[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_]:=a0/.gellMannComponents[rbarinifMat[\[Xi]e,\[Xi]\[Mu],\[Xi]\[Tau]]];
 
 
-(* ::Subsubsection:: *)
+(* ::Subsubsection::Closed:: *)
 (*Functions to run, plot and perform oscillation average*)
 
 
