@@ -212,7 +212,7 @@ h0vec[x_]:=1/(hubble[x]x) {a1,a2,a3,a4,a5,a6,a7,a8}/.gellMannComponents[h0mat[x]
 
 (*Vc: matter potential*)
 
-(*Electron integrals computed via expansion for small Subscript[m, e]/T*)
+(*Electron integrals computed via expansion for small me/T*)
 epluspe[x_]:=(7\[Pi]^2)/45-1/6 me^2/T^2//.{T->Tref/x};(*Eq. (9)*)
 
 (*Muon integrals computed in the Maxwell-Boltzmann approximation*)
@@ -366,7 +366,7 @@ r0inif[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_]:=a0/.gellMannComponents[rinifMat[\[Xi]e
 rbar0inif[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_]:=a0/.gellMannComponents[rbarinifMat[\[Xi]e,\[Xi]\[Mu],\[Xi]\[Tau]]];
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Functions to run, plot and perform oscillation average*)
 
 
@@ -388,7 +388,7 @@ rbar0inif[\[Xi]e_,\[Xi]\[Mu]_,\[Xi]\[Tau]_]:=a0/.gellMannComponents[rbarinifMat[
 (*adiabatic : True in order to use the adiabatic approximation from the beginning, False to solve the full system, *)
 (*timeoutAdiabatic : When the full system is being solved, this is the execution time in seconds after which the solver switches to the adiabatic approximation*)
 (**)
-(*Note that by definition one should respect Tini < Tave <= Tfinal*)
+(*Note that by definition one should respect Tini > Tave >= Tfinal*)
 (**)
 (*The output in all cases is a Mathematica plot and a saved . dat file with the results*)
 
