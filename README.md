@@ -2,10 +2,11 @@
 
 The C++ code "COFLASY-C" has been developed by Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner in order to study the evolution of primordial lepton flavour asymmetries from the early Universe to BBN, following the approach of arXiv:2502.14960. If you use this code for scientific publications, please cite these papers: 
 
-"Lepton Flavour Asymmetries: from the early Universe to BBN."  Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner,
-[JHEP 06, 137] (https://link.springer.com/article/10.1007/JHEP06(2025)137), [arXiv:2502.14960] (https://arxiv.org/abs/2502.14960), [INSPIRE] (https://inspirehep.net/literature/2893306).
+"Lepton Flavour Asymmetries: from the early Universe to BBN",  Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner,
+[JHEP 06 (2025), 137] ( https://link.springer.com/article/10.1007/JHEP06(2025)137 ), [arXiv:2502.14960] ( https://arxiv.org/abs/2502.14960 ).
 
-"A Limit on the Total Lepton Number in the Universe from BBN and the CMB." Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner, [arxiv:2510.02438]. (https://arxiv.org/abs/2510.02438).
+"A Limit on the Total Lepton Number in the Universe from BBN and the CMB", Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner,
+[JCAP 02 (2026) 017] ( https://iopscience.iop.org/article/10.1088/1475-7516/2026/02/017 ), [arXiv:2510.02438] ( https://arxiv.org/abs/2510.02438 ).
 
 ## Requirements
 
@@ -54,7 +55,7 @@ example.ini: contains all initial conditions, which can be changed by the user.
 
 output: stores the output of the code and a Mathematica notebook to generate simple plots.
 
-publicdata: contains the data used in our paper [arxiv:2510.02438]
+publicdata: contains the data used in our paper [arXiv:2510.02438]
 
 
 ## Acknowledgement 
