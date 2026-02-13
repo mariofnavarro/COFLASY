@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[    140510,       3697]
-NotebookOptionsPosition[    137956,       3652]
-NotebookOutlinePosition[    138347,       3668]
-CellTagsIndexPosition[    138304,       3665]
+NotebookDataLength[    140651,       3699]
+NotebookOptionsPosition[    138097,       3654]
+NotebookOutlinePosition[    138488,       3670]
+CellTagsIndexPosition[    138445,       3667]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30,23 +30,25 @@ Cell[TextData[{
   FontColor->RGBColor[
    0.04122987716487373, 0.03126573586633097, 0.015243762874799725`]],
  "), Stefan Sandner (stefan.sandner@lanl.gov)\n\nIf you use this code for \
-scientific publications, please cite the paper :\n  \n\"Lepton Flavour \
-Asymmetries: from the early Universe to BBN\",  Valerie Domcke, Miguel \
-Escudero, Mario Fernandez Navarro and Stefan Sandner,\n[JHEP 06, 137] ( \
+scientific publications, please cite these papers:\n  \n",
+ StyleBox["\[OpenCurlyDoubleQuote]Lepton Flavour Asymmetries: from the early \
+Universe to BBN\[CloseCurlyDoubleQuote],  Valerie Domcke, Miguel Escudero, \
+Mario Fernandez Navarro and Stefan Sandner,\n[JHEP 06 (2025), 137] ( \
 https://link.springer.com/article/10.1007/JHEP06(2025)137 ), \
-[arXiv:2502.14960] ( https://arxiv.org/abs/2502.14960 ), [INSPIRE] ( \
-https://inspirehep.net/literature/2893306 ) .\n\n",
- StyleBox["\[OpenCurlyDoubleQuote]A Limit on the Total Lepton Number in the \
-Universe from BBN and the CMB.\[CloseCurlyDoubleQuote] Valerie Domcke, Miguel \
-Escudero, Mario Fernandez Navarro and Stefan Sandner, [arxiv:2510.02438]. \
-(https://arxiv.org/abs/2510.02438).", "Subsection",
+[arXiv:2502.14960] ( https://arxiv.org/abs/2502.14960 ).\n\n\
+\[OpenCurlyDoubleQuote]A Limit on the Total Lepton Number in the Universe \
+from BBN and the CMB\[CloseCurlyDoubleQuote], Valerie Domcke, Miguel \
+Escudero, Mario Fernandez Navarro and Stefan Sandner,\n[JCAP 02 (2026) 017] ( \
+https://iopscience.iop.org/article/10.1088/1475-7516/2026/02/017 ), \
+[arXiv:2510.02438] ( https://arxiv.org/abs/2510.02438 ).", "Subsection",
   FontSize->16,
   FontColor->RGBColor[
    0.04122987716487373, 0.03126573586633097, 0.015243762874799725`]],
  "\n  "
 }], "Text",
  CellChangeTimes->{{3.968830038415091*^9, 3.96883004334846*^9}, 
-   3.977375481447291*^9},ExpressionUUID->"c4bfa837-9038-45bf-b7ad-\
+   3.977375481447291*^9, {3.979984563232291*^9, 
+   3.9799845669005613`*^9}},ExpressionUUID->"c4bfa837-9038-45bf-b7ad-\
 689541e6744b"],
 
 Cell["\<\
@@ -3669,34 +3671,34 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[576, 22, 99, 0, 66, "Section",ExpressionUUID->"8750b8bd-e88d-4348-9f44-8d371e419677"],
-Cell[678, 24, 1352, 25, 234, "Text",ExpressionUUID->"c4bfa837-9038-45bf-b7ad-689541e6744b"],
-Cell[2033, 51, 341, 9, 143, "Text",ExpressionUUID->"1e59a244-daa4-4037-a52c-ced80b582c56"],
+Cell[678, 24, 1493, 27, 238, "Text",ExpressionUUID->"c4bfa837-9038-45bf-b7ad-689541e6744b"],
+Cell[2174, 53, 341, 9, 143, "Text",ExpressionUUID->"1e59a244-daa4-4037-a52c-ced80b582c56"],
 Cell[CellGroupData[{
-Cell[2399, 64, 93, 0, 43, "Subsubsection",ExpressionUUID->"815f703e-ba72-4137-8968-eb6c0628836d"],
-Cell[2495, 66, 4528, 126, 608, "Code",ExpressionUUID->"b90677d5-c91a-4ad8-b3b8-9183787b2c1b"],
-Cell[7026, 194, 6233, 167, 70, "Code",ExpressionUUID->"e1c7aaa4-0c18-4d88-8251-386643bd627e"],
-Cell[13262, 363, 5440, 129, 70, "Code",ExpressionUUID->"a183e5d0-3940-49fd-968d-d511bd60dae7"]
+Cell[2540, 66, 93, 0, 43, "Subsubsection",ExpressionUUID->"815f703e-ba72-4137-8968-eb6c0628836d"],
+Cell[2636, 68, 4528, 126, 608, "Code",ExpressionUUID->"b90677d5-c91a-4ad8-b3b8-9183787b2c1b"],
+Cell[7167, 196, 6233, 167, 70, "Code",ExpressionUUID->"e1c7aaa4-0c18-4d88-8251-386643bd627e"],
+Cell[13403, 365, 5440, 129, 70, "Code",ExpressionUUID->"a183e5d0-3940-49fd-968d-d511bd60dae7"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[18739, 497, 89, 0, 35, "Subsubsection",ExpressionUUID->"4dba8cd8-4ee0-46a0-aa62-f2c1c108642d"],
-Cell[18831, 499, 2169, 62, 258, "Code",ExpressionUUID->"1d9ee1a8-1f9b-4dec-807f-aaa6b3910b90"],
-Cell[21003, 563, 1914, 58, 126, "Code",ExpressionUUID->"6165fb25-9f8e-4c83-b2de-1a8be4e7b312"],
-Cell[22920, 623, 8689, 248, 572, "Code",ExpressionUUID->"83b27fde-ab2c-4557-b6fe-f77a651753d7"],
-Cell[31612, 873, 14123, 404, 711, "Code",ExpressionUUID->"22224992-9193-4408-8f8c-6b8d235e1e0b"],
-Cell[45738, 1279, 7832, 228, 541, "Code",ExpressionUUID->"b1253920-51ed-40af-8827-170cd049f055"],
-Cell[53573, 1509, 7434, 194, 70, "Code",ExpressionUUID->"0e685d48-f091-4daa-9567-48b90500e3d8"]
+Cell[18880, 499, 89, 0, 35, "Subsubsection",ExpressionUUID->"4dba8cd8-4ee0-46a0-aa62-f2c1c108642d"],
+Cell[18972, 501, 2169, 62, 258, "Code",ExpressionUUID->"1d9ee1a8-1f9b-4dec-807f-aaa6b3910b90"],
+Cell[21144, 565, 1914, 58, 126, "Code",ExpressionUUID->"6165fb25-9f8e-4c83-b2de-1a8be4e7b312"],
+Cell[23061, 625, 8689, 248, 572, "Code",ExpressionUUID->"83b27fde-ab2c-4557-b6fe-f77a651753d7"],
+Cell[31753, 875, 14123, 404, 711, "Code",ExpressionUUID->"22224992-9193-4408-8f8c-6b8d235e1e0b"],
+Cell[45879, 1281, 7832, 228, 541, "Code",ExpressionUUID->"b1253920-51ed-40af-8827-170cd049f055"],
+Cell[53714, 1511, 7434, 194, 70, "Code",ExpressionUUID->"0e685d48-f091-4daa-9567-48b90500e3d8"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[61044, 1708, 98, 0, 35, "Subsubsection",ExpressionUUID->"e957950b-63a7-4c42-abe2-4e20bcc747c2"],
-Cell[61145, 1710, 4502, 134, 70, "Code",ExpressionUUID->"19970fb0-6a01-4277-8209-8bc8ca62a7fc"],
-Cell[65650, 1846, 6629, 183, 70, "Code",ExpressionUUID->"7b412c59-1f87-46d6-91f1-3cec927c26a9"]
+Cell[61185, 1710, 98, 0, 35, "Subsubsection",ExpressionUUID->"e957950b-63a7-4c42-abe2-4e20bcc747c2"],
+Cell[61286, 1712, 4502, 134, 70, "Code",ExpressionUUID->"19970fb0-6a01-4277-8209-8bc8ca62a7fc"],
+Cell[65791, 1848, 6629, 183, 70, "Code",ExpressionUUID->"7b412c59-1f87-46d6-91f1-3cec927c26a9"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[72316, 2034, 134, 0, 35, "Subsubsection",ExpressionUUID->"fc8db554-a738-4b66-b600-3cf877a8c72a"],
-Cell[72453, 2036, 1614, 35, 449, "Text",ExpressionUUID->"04e5fc31-73cb-421f-bac1-63123363421f"],
-Cell[74070, 2073, 880, 24, 88, "Code",ExpressionUUID->"afed23f1-f19d-4cc2-8760-83332620e197"],
-Cell[74953, 2099, 31890, 776, 1880, "Code",ExpressionUUID->"4e23a23a-90ad-4158-a47d-401fe4f1d4a4"],
-Cell[106846, 2877, 31082, 771, 70, "Code",ExpressionUUID->"d8546012-4f6a-4040-92a9-917a12e66715"]
+Cell[72457, 2036, 134, 0, 35, "Subsubsection",ExpressionUUID->"fc8db554-a738-4b66-b600-3cf877a8c72a"],
+Cell[72594, 2038, 1614, 35, 449, "Text",ExpressionUUID->"04e5fc31-73cb-421f-bac1-63123363421f"],
+Cell[74211, 2075, 880, 24, 88, "Code",ExpressionUUID->"afed23f1-f19d-4cc2-8760-83332620e197"],
+Cell[75094, 2101, 31890, 776, 1880, "Code",ExpressionUUID->"4e23a23a-90ad-4158-a47d-401fe4f1d4a4"],
+Cell[106987, 2879, 31082, 771, 70, "Code",ExpressionUUID->"d8546012-4f6a-4040-92a9-917a12e66715"]
 }, Closed]]
 }, Open  ]]
 }

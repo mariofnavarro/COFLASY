@@ -7,12 +7,13 @@
 (* ::Text:: *)
 (*by Valerie Domcke (valerie.domcke@cern.ch), Miguel Escudero (miguel.escudero@cern.ch), Mario Fernandez Navarro (mario.fernandeznavarro@physik.uzh.ch), Stefan Sandner (stefan.sandner@lanl.gov)*)
 (**)
-(*If you use this code for scientific publications, please cite the paper :*)
+(*If you use this code for scientific publications, please cite these papers :*)
 (*  *)
 (*"Lepton Flavour Asymmetries: from the early Universe to BBN",  Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner,*)
-(*[JHEP 06, 137] ( https://link.springer.com/article/10.1007/JHEP06(2025)137 ), [arXiv:2502.14960] ( https://arxiv.org/abs/2502.14960 ), [INSPIRE] ( https://inspirehep.net/literature/2893306 ) .*)
+(*[JHEP 06 (2025), 137] ( https://link.springer.com/article/10.1007/JHEP06(2025)137 ), [arXiv:2502.14960] ( https://arxiv.org/abs/2502.14960 ).*)
 (**)
-(*"A Limit on the Total Lepton Number in the Universe from BBN and the CMB." Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner, [arxiv:2510.02438]. (https://arxiv.org/abs/2510.02438).*)
+(*"A Limit on the Total Lepton Number in the Universe from BBN and the CMB", Valerie Domcke, Miguel Escudero, Mario Fernandez Navarro and Stefan Sandner,*)
+(*[JCAP 02 (2026) 017] ( https://iopscience.iop.org/article/10.1088/1475-7516/2026/02/017 ), [arXiv:2510.02438] ( https://arxiv.org/abs/2510.02438 ).*)
 (*  *)
 
 
