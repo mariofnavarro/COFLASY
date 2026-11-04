@@ -23,6 +23,7 @@
 #include <thread>
 #include <ctime>  
 #include <array>
+#include <filesystem>
 
 
 #include <gsl/gsl_rng.h>
@@ -2047,7 +2048,7 @@ array<double, 18> ode_evolve(void* params, string filename="", string flush="no"
       
 
       /* 
-      calculate alternatice input parameters and print them to terminal
+      calculate alternative input parameters and print them to terminal
       */
       double xitilde1, xitilde2, xitilde3, xitilde_tot;
       xitilde1    = paramtranslate.get_xi_tilde_alpha_from_xi_alpha(xi1);
@@ -2074,7 +2075,7 @@ array<double, 18> ode_evolve(void* params, string filename="", string flush="no"
 
 
 
-      /* ---- set intial conditions ---- */
+      /* ---- set initial conditions ---- */
       /* initial conditions in flavor space */
       complx r_flavor_ini[3][3];
       complx rbar_flavor_ini[3][3];
@@ -2552,32 +2553,6 @@ int main(int argc, char* argv[]){
       auto start_main = chrono::system_clock::now();
       cout.precision(6);
 
-      /*
-      set the electron density and pressure functions
-      */
-      set_density();
-
-      /*
-      set the Collision interpolation function
-      */
-      set_collision1D();
-      set_collision2D();
-      set_collision2D_me();
-
-      /*
-      set the Transfer rate interpolation function
-      */
-      set_transfer1D();
-      set_transfer2D();
-
-      /*
-      set the weak rates for neutron to proton fraction
-      */
-      set_weakrates1D();
-      set_weakrates2D();
-      set_weakratescorrection();
-
-
       if (argv[1] == NULL){
             cout << "\033[31mYou need to pass at least one argument.\033[39;49m" << endl;
             cout << "exemplary usage: ./coflasy-c.exe ../example.ini" << endl;
@@ -2587,6 +2562,10 @@ int main(int argc, char* argv[]){
             string arg(argv[1]);
             bool found_ini = arg.find(".ini") != string::npos;
             if (found_ini == true){
+                  if (!std::filesystem::is_regular_file(arg)){
+                        cerr << "\033[31mError: .ini file " << arg << " not found.\033[39;49m" << endl;
+                        return _FAIL_;
+                  }
                   vector<double> vars     = read_ini(argv[1]);
                   double xi1,xi2,xi3;
                   vector<string> filename = read_ini_filename(argv[1]);
@@ -2600,6 +2579,49 @@ int main(int argc, char* argv[]){
                         filename[1] = "yes";
                   }
                   cout << "progressbar will be shown: " << filename[1] << endl;
+                  /* set the global _Path_ from the .ini file (keep the default ".." if empty) */
+                  if (filename[2] != ""){
+                        _Path_ = filename[2];
+                        while (_Path_.size() > 1 && _Path_.back() == '/'){
+                              _Path_.pop_back();
+                        }
+                  }
+                  cout << "path to COFLASY directory: " << _Path_ << endl;
+
+                  /* check that data/ and output/ exist before loading the data */
+                  for (const std::string folder : {"data", "output"}){
+                    const std::string dir = _Path_ + "/" + folder;
+                    if (!std::filesystem::is_directory(dir)){
+                        std::cerr << "\033[31mError: directory " << dir << " not found.\033[39;49m" << std::endl;
+                        std::exit(_FAIL_);
+                    }
+                  }
+
+                  /*
+                  set the electron density and pressure functions
+                  */
+                  set_density();
+
+                  /*
+                  set the Collision interpolation function
+                  */
+                  set_collision1D();
+                  set_collision2D();
+                  set_collision2D_me();
+
+                  /*
+                  set the Transfer rate interpolation function
+                  */
+                  set_transfer1D();
+                  set_transfer2D();
+
+                  /*
+                  set the weak rates for neutron to proton fraction
+                  */
+                  set_weakrates1D();
+                  set_weakrates2D();
+                  set_weakratescorrection();
+
                   if (vars[5] == 0){
                         cout << "passed xi_alpha" << endl;
                         xi1= vars[6]; xi2 = vars[7]; xi3 = vars[8];

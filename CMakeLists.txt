@@ -21,6 +21,10 @@ include_directories(${GSL_INCLUDE_DIR})
 
 
 add_executable( coflasy-c.exe ${CMAKE_CURRENT_SOURCE_DIR}/coflasy-c.cpp)
+
+set_target_properties(coflasy-c.exe PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY         ${CMAKE_CURRENT_SOURCE_DIR}/build)
+
 target_link_libraries(coflasy-c.exe GSL::gsl GSL::gslcblas)
 
 

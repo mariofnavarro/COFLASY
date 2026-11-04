@@ -50,10 +50,10 @@ vector<double> read_ini(string path){
 
 vector<string> read_ini_filename(string path){
     static int ini_section;
-    vector<string> vars(2);
-    vector<string> names(2);
+    vector<string> vars(3);
+    vector<string> names(3);
        
-    names= {"filename", "progressbar"};
+    names= {"filename", "progressbar", "path"};
 
     ini::IniFile inif;
     inif.load(path);

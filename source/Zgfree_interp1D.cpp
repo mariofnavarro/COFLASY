@@ -46,9 +46,11 @@ private:
 
 public:
     /*
-    Constructor of the class; read files of the rates and set the shared interpolation settings
+    Constructor of the class; the data files are read later in load()
     */
-    Zgfree(void){
+    Zgfree(void){}
+
+    void load(void){
         ifstream myfile_x;
         myfile_x.open(_Path_ + "/data/zg_free/z.dat");
         if ( myfile_x.is_open() ) {
@@ -132,5 +134,6 @@ Zgfree zgfree;
 call this in the int main() (amiqs.cpp) to set the interpolation grid
 */
 void set_zgfree(void){
+    zgfree.load();
     zgfree.set_zg();
 }

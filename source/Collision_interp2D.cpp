@@ -63,9 +63,11 @@ private:
 
 public:
     /*
-    Constructor of the class; read files of the Transfer Rates and set the shared interpolation settings
+    Constructor of the class; the data files are read later in load()
     */
-    Collision2D(void){
+    Collision2D(void){}
+
+    void load(void){
         ifstream myfile_znu;
         myfile_znu.open(_Path_ + "/data/Collision/z.dat");
         if ( myfile_znu.is_open() ) {
@@ -305,6 +307,7 @@ Collision2D collision2D;
 call this in the int main() (amiqs.cpp) to set the interpolation grid
 */
 void set_collision2D(void){
+    collision2D.load();
     // nu e <-> nu e
     collision2D.set_A12_nue_nue_I0();
     collision2D.set_A124_nue_nue_I0();

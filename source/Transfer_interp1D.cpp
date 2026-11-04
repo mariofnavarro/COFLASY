@@ -39,9 +39,11 @@ private:
 
 public:
     /*
-    Constructor of the class; read files of the rates and set the shared interpolation settings
+    Constructor of the class; the data files are read later in load()
     */
-    Transfer1D(void){
+    Transfer1D(void){}
+
+    void load(void){
         ifstream myfile_z;
         myfile_z.open(_Path_ + "/data/Transfer_Rate/z.dat");
         if ( myfile_z.is_open() ) {
@@ -121,6 +123,7 @@ Transfer1D transfer1D;
 call this in the int main() (amiqs.cpp) to set the interpolation grid
 */
 void set_transfer1D(void){
+    transfer1D.load();
     // nu nu -> e e
     transfer1D.set_Aij_nunu_ee_I1();
 }

@@ -62,9 +62,11 @@ private:
 
 public:
     /*
-    Constructor of the class; read files of the rates and set the shared interpolation settings
+    Constructor of the class; the data files are read later in load()
     */
-    Density(void){
+    Density(void){}
+
+    void load(void){
         ifstream myfile_Tg;
         myfile_Tg.open(_Path_ + "/data/rho_p/Tg.dat");
         if ( myfile_Tg.is_open() ) {
@@ -246,6 +248,7 @@ Density density;
 call this in the int main() (amiqs.cpp) to set the interpolation grid
 */
 void set_density(void){
+    density.load();
     density.set_drhoe();
     density.set_rhoe();
     density.set_pe();

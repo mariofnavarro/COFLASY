@@ -49,9 +49,11 @@ private:
 
 public:
     /*
-    Constructor of the class; read files of the rates and set the shared interpolation settings
+    Constructor of the class; the data files are read later in load()
     */
-    WeakRatesCorrection(void){
+    WeakRatesCorrection(void){}
+
+    void load(void){
         ifstream myfile_T;
         myfile_T.open(_Path_ + "/data/WeakRates/Corrections/Tg.dat");
         if ( myfile_T.is_open() ) {
@@ -161,6 +163,7 @@ WeakRatesCorrection weakratescorrection;
 call this in the int main() (amiqs.cpp) to set the interpolation grid
 */
 void set_weakratescorrection(void){
+    weakratescorrection.load();
     weakratescorrection.set_Gamma_np_Corr();
     weakratescorrection.set_Gamma_pn_Corr();
 }

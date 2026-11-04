@@ -54,9 +54,11 @@ private:
 
 public:
     /*
-    Constructor of the class; read files of the rates and set the shared interpolation settings
+    Constructor of the class; the data files are read later in load()
     */
-    Collision1D(void){
+    Collision1D(void){}
+
+    void load(void){
         ifstream myfile_z;
         myfile_z.open(_Path_ + "/data/Collision/z.dat");
         if ( myfile_z.is_open() ) {
@@ -190,6 +192,7 @@ Collision1D collision1D;
 call this in the int main() (amiqs.cpp) to set the interpolation grid
 */
 void set_collision1D(void){
+    collision1D.load();
     // nu e -> nu e
     collision1D.set_A12_nunu_ee_I0();
     // nu nu -> nu nu annihilation

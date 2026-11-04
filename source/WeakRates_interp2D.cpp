@@ -75,9 +75,11 @@ private:
 
 public:
     /*
-    Constructor of the class; read files of the Transfer Rates and set the shared interpolation settings
+    Constructor of the class; the data files are read later in load()
     */
-    WeakRates2D(void){
+    WeakRates2D(void){}
+
+    void load(void){
         ifstream myfile_Tnu;
         myfile_Tnu.open(_Path_ + "/data/WeakRates/T.dat");
         if ( myfile_Tnu.is_open() ) {
@@ -390,6 +392,7 @@ WeakRates2D weakrates2D;
 call this in the int main() (amiqs.cpp) to set the interpolation grid
 */
 void set_weakrates2D(void){
+    weakrates2D.load();
     // rates
     weakrates2D.set_Gamma_n_penu4();
     weakrates2D.set_Gamma_ne_pnu2();

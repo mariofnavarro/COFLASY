@@ -54,9 +54,11 @@ private:
 
 public:
     /*
-    Constructor of the class; read files of the Transfer Rates and set the shared interpolation settings
+    Constructor of the class; the data files are read later in load()
     */
-    Transfer2D(void){
+    Transfer2D(void){}
+
+    void load(void){
         ifstream myfile_znu;
         myfile_znu.open(_Path_ + "/data/Transfer_Rate/z.dat");
         if ( myfile_znu.is_open() ) {
@@ -209,6 +211,7 @@ Transfer2D transfer2D;
 call this in the int main() (amiqs.cpp) to set the interpolation grid
 */
 void set_transfer2D(void){
+    transfer2D.load();
     // nu e <-> nu e
     transfer2D.set_A12_nue_nue_I1();
     transfer2D.set_A34_nue_nue_I1();

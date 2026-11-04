@@ -12,7 +12,9 @@
 #define _FAIL_ 1 /**< integer returned after failed call of a function */
 
 
-const std::string _Path_= "..";
+// base path of the COFLASY directory (data/ and output/ live here);
+// default "..", overwritten by the "path" entry of the .ini file
+std::string _Path_= "..";
 
 
 const double _PI_       = 3.141592653589793238462643383279;
