@@ -23,6 +23,7 @@ The C++ code "COFLASY-C" has been developed by Valerie Domcke, Miguel Escudero, 
 
 With GSL installed on your system, the Makefile can be generated within the main folder by executing the following:
 
+    mkdir build
     cd build
     cmake ..
     make
