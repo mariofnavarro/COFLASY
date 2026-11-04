@@ -82,5 +82,6 @@ publicdata: contains the data used in our paper [arXiv:2510.02438]
 
 The code makes use of the ini file decoder [inifile-cpp](https://github.com/Rookfighter/inifile-cpp).
 
+We thank Luca Wiggering (https://github.com/lucawiggering) for contributing the Conan installation method.
 
 For any comment, please contact us at: Stefan.Sandner@lanl.gov, mario.fernandeznavarro@physik.uzh.ch
