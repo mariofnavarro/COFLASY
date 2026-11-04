@@ -23,6 +23,7 @@
 #include <thread>
 #include <ctime>  
 #include <array>
+#include <filesystem>
 
 
 #include <gsl/gsl_rng.h>
